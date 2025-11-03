@@ -12,72 +12,79 @@ Pode ser facilmente adaptado a outros setores de comércio.
 
 ## 💻 Tecnologias Utilizadas
 
- • JAVA: escolhida pela sua portabilidade, orientação a objetos e pela vasta biblioteca de recursos. A linguagem permitiu estruturar o sistema de forma modular e escalável. 
- • SWING: usado para criar a interface gráfica, proporcionando ao utilizador uma interação simples e intuitiva com o sistema. 
- • JTable (Swing Component): utilizado para apresentar os dados do inventário de forma tabular, permitindo uma visualização clara e organizada das informações dos produtos (como nome, plataforma, quantidade e preço). 
- O componente facilita também operações como atualização e remoção de registos diretamente na interface.
- • JDBC (Java Database Connectivity): adotado para realizar a ligação entre a aplicação Java e a base de dados, garantindo comunicação eficiente e segura. 
- • SQL (Structured Query Language): utilizado para a criação e gestão da base de dados, permitindo armazenar, consultar, atualizar e eliminar os registos de stock de videojogos. 
- • MAVEN: utilizado para gerir o ciclo de vida do projeto, incluindo compilação, execução de testes e criação do ficheiro .jar. 
- Permite organizar o código de forma padronizada (src/main/java, src/main/resources) e facilita a inclusão de futuras dependências. 
- • NETBEANS IDE: selecionado como ambiente de desenvolvimento por oferecer uma boa integração com Java, Swing e JDBC, facilitando a implementação e a depuração do projeto. 
- A escolha destas tecnologias deveu-se ao facto de proporcionarem uma solução completa: Java assegura a lógica e a interface, SQL garante a persistência dos dados e o NetBeans oferece um ambiente de trabalho integrado e produtivo.
+- **JAVA**: escolhida pela sua portabilidade, orientação a objetos e vasta biblioteca de recursos. A linguagem permitiu estruturar o sistema de forma modular e escalável.  
+
+- **SWING**: usado para criar a interface gráfica, proporcionando ao utilizador uma interação simples e intuitiva com o sistema.  
+
+- **JTable (componente Swing)**: utilizado para apresentar os dados do inventário de forma tabular, permitindo uma visualização clara e organizada das informações dos produtos (como nome, plataforma, quantidade e preço). O componente facilita também operações como atualização e remoção de registos diretamente na interface.  
+
+- **JDBC (Java Database Connectivity)**: adotado para realizar a ligação entre a aplicação Java e a base de dados, garantindo comunicação eficiente e segura.  
+
+- **SQL (Structured Query Language)**: utilizado para a criação e gestão da base de dados, permitindo armazenar, consultar, atualizar e eliminar os registos de stock de videojogos.  
+
+- **MAVEN**: utilizado para gerir o ciclo de vida do projeto, incluindo compilação, execução de testes e criação do ficheiro `.jar`. Permite organizar o código de forma padronizada (`src/main/java`, `src/main/resources`) e facilita a inclusão de futuras dependências.  
+
+- **NETBEANS IDE**: selecionado como ambiente de desenvolvimento por oferecer uma boa integração com Java, Swing e JDBC, facilitando a implementação e a depuração do projeto.  
+
+A escolha destas tecnologias deveu-se ao facto de proporcionarem uma solução completa: **Java** assegura a lógica e a interface, **SQL** garante a persistência dos dados e o **NetBeans** oferece um ambiente de trabalho integrado e produtivo.
 
 ---
 
- ## 🗂 Estrutura do Projeto:
+## 📁 Estrutura do Projeto
 
+
+```
 Projeto/
 │
 ├── Database/
-│   └── videogames_db.sql              ← Export da base de dados MySQL
+│   └── videogames_db.sql               ← Export da base de dados MySQL
 │
 ├── Java/
 │   └── videogamesStock/
 │       ├── src/main/java/com/mycompany/videogamesstock/
 │       │
-│       │   ├── VideogamesStockMain.java        ← Classe principal (inicializa a aplicação)
+│       ├── VideogamesStockMain.java     ← Classe principal (inicializa a aplicação)
 │       │
-│       │   ├── 🔧 Base / Utilitários
-│       │   │   ├── ConexaoDB.java              ← Liga-se à base de dados MySQL
-│       │   │   ├── I18n.java                   ← Internacionalização (PT/EN)
-│       │   │   ├── PasswordUtils.java          ← Hash de passwords (SHA-256 + salt)
-│       │   │   └── TesteConexao.java           ← Teste de ligação à BD
+│       ├── 🔧 Base / Utilitários
+│       │   ├── ConexaoDB.java           ← Liga-se à base de dados MySQL
+│       │   ├── I18n.java                ← Internacionalização (PT/EN)
+│       │   ├── PasswordUtils.java       ← Hash de passwords (SHA-256 + salt)
+│       │   └── TesteConexao.java        ← Teste de ligação à BD
 │       │
-│       │   ├── 👤 Clientes
-│       │   │   ├── Cliente.java                ← Modelo de dados do cliente
-│       │   │   └── ClienteDAO.java             ← CRUD de clientes
+│       ├── 👤 Clientes
+│       │   ├── Cliente.java             ← Modelo de dados do cliente
+│       │   └── ClienteDAO.java          ← CRUD de clientes
 │       │
-│       │   ├── 🎮 Produtos / Stock
-│       │   │   ├── Produto.java                ← Modelo de dados do produto
-│       │   │   ├── ProdutoDAO.java             ← CRUD de produtos e consultas
-│       │   │   └── ProdutoFormDialog.java      ← Formulário de criação/edição de produtos
+│       ├── 🎮 Produtos / Stock
+│       │   ├── Produto.java             ← Modelo de dados do produto
+│       │   ├── ProdutoDAO.java          ← CRUD de produtos e consultas
+│       │   └── ProdutoFormDialog.java   ← Formulário de criação/edição de produtos
 │       │
-│       │   ├── 🧾 Pedidos / Vendas
-│       │   │   ├── Pedido.java                 ← Cabeçalho do pedido
-│       │   │   ├── PedidoItem.java             ← Itens do pedido
-│       │   │   └── PedidoDAO.java              ← Gestão e gravação de pedidos
+│       ├── 🧾 Pedidos / Vendas
+│       │   ├── Pedido.java              ← Cabeçalho do pedido
+│       │   ├── PedidoItem.java          ← Itens do pedido
+│       │   └── PedidoDAO.java           ← Gestão e gravação de pedidos
 │       │
-│       │   └── 🖥️ Interface Gráfica (GUI)
-│       │       ├── LoginPanel.java             ← Autenticação do utilizador
-│       │       ├── PainelPrincipal.java        ← Menu principal e navegação
-│       │       ├── PainelVenda.java            ← Gestão das vendas/pedidos
-│       │       ├── PainelHistorico.java        ← Histórico de pedidos
-│       │       └── PainelRelatorio.java        ← Exportação e filtros de relatórios
-│       │
-│       ├── resources/
-│       │   ├── messages_pt.properties          ← Traduções (Português)
-│       │   ├── messages_en.properties          ← Traduções (Inglês)
-│       │   └── images/                         ← Ícones e logótipos
-│       │       ├── Logo.png
-│       │       ├── pt.png
-│       │       ├── uk.png
-│       │       └── favicon.png
-│       │
-│       └── config/
-│           └── db.properties                   ← Configuração da ligação à base de dados
+│       └── 🖥️ Interface Gráfica (GUI)
+│           ├── LoginPanel.java          ← Autenticação do utilizador
+│           ├── PainelPrincipal.java     ← Menu principal e navegação
+│           ├── PainelVenda.java         ← Gestão das vendas/pedidos
+│           ├── PainelHistorico.java     ← Histórico de pedidos
+│           └── PainelRelatorio.java     ← Exportação e filtros de relatórios
 │
-├── Demos/                                      ← Imagens de demonstração da aplicação
+├── resources/
+│   ├── messages_pt.properties           ← Traduções (Português)
+│   ├── messages_en.properties           ← Traduções (Inglês)
+│   └── images/                          ← Ícones e logótipos
+│       ├── Logo.png
+│       ├── pt.png
+│       ├── uk.png
+│       └── favicon.png
+│
+├── config/
+│   └── db.properties                    ← Configuração da ligação à base de dados
+│
+├── Demos/                               ← Imagens de demonstração da aplicação
 │   ├── DemoDashboard.png
 │   ├── DemoHomePage.png
 │   ├── DemoPainelCRUDStock.png
@@ -87,7 +94,8 @@ Projeto/
 │   ├── DemoConfirmaçãoRelatório.png
 │   └── DemoGerarRelatórios.png
 │
-└── README.md                                   ← Instruções e documentação do projeto
+└── README.md                            ← Instruções e documentação do projeto
+```
 
 ---
 
